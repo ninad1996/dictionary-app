@@ -20,5 +20,3 @@ app.get('/express_backend', (req, res) => { //Line 9
       })
 
 }); //Line 11
-
-module.exports = app;
