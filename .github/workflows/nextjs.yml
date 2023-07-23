@@ -93,5 +93,3 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v2
-      - name: Start Server
-        run: ${{ steps.detect-package-manager.outputs.runner }} node server.js        
