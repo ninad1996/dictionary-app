@@ -3,7 +3,7 @@
     "builds": [
       {
         // Specify file to convert to a serverless function
-        "src": "server.js",
+        "src": "./server.js",
         // Specify the NPM module that is used for the build
         "use": "@now/node"
       },
@@ -12,7 +12,7 @@
             // Specify which paths will route to a destination using a regex
             "src": "/(.*)",
             // Specify the paths' destination
-            "dest": "server.js"
+            "dest": "/"
         }
     ]
     ]
