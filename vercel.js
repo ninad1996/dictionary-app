@@ -1,19 +1,14 @@
 {
     "version": 2,
-    "builds": [
+    "builds": [{
+      "src": "./server.js",
+      "use": "@now/node-server"
+    }],
+    "routes": [{"handle": "filesystem"},
       {
-        // Specify file to convert to a serverless function
-        "src": "./server.js",
-        // Specify the NPM module that is used for the build
-        "use": "@now/node"
-      },
-    "routes": [
-        {
-            // Specify which paths will route to a destination using a regex
-            "src": "/(.*)",
-            // Specify the paths' destination
-            "dest": "/"
-        }
-    ]
+        "src": "/.*",
+        "dest": "server.js"
+      }
     ]
   }
+  
