@@ -3,17 +3,11 @@ import {useState, useEffect, useRef} from 'react'
 import FeatherIcon from 'feather-icons-react'
 import axios from "axios"
 
-// import { fs } from 'fs';
-import googleTrendsApi from "google-trends-api";
 
 
 const Search = () => {
     const [meaning, setMeaning] = useState("");
     const form = useRef(null)    
-    // const proxyAgent =  new HttpsProxyAgent('http://168.63.76.32:3128');
-
-    // hl=en-US&req={"comparisonItem":[{"keyword":"Donald Trump","startTime":"2017-02-01T00:00:00.000Z","endTime":"2017-02-06T00:00:00.000Z","geo":"US","hl":"en-US","category":0,"timezone":-330,"property":"","time":"2017-02-1 2017-02-6"}],"category":0,"property":""}&tz=-330
-
     // https://trends.google.com/trends/api/explore?hl=en-US&req=%7B%22comparisonItem%22%3A%5B%7B%22keyword%22%3A%22Donald%20Trump%22%2C%22startTime%22%3A%222017-02-01T00%3A00%3A00.000Z%22%2C%22endTime%22%3A%222017-02-06T00%3A00%3A00.000Z%22%2C%22geo%22%3A%22US%22%2C%22agent%22%3A%7B%22options%22%3A%7B%7D%2C%22proxy%22%3A%22http%3A%2F%2F168.63.76.32%3A3128%2F%22%2C%22proxyHeaders%22%3A%7B%7D%2C%22connectOpts%22%3A%7B%22ALPNProtocols%22%3A%5B%22http%2F1.1%22%5D%2C%22host%22%3A%22168.63.76.32%22%2C%22port%22%3A3128%7D%7D%2C%22hl%22%3A%22en-US%22%2C%22category%22%3A0%2C%22timezone%22%3A-330%2C%22property%22%3A%22%22%2C%22time%22%3A%222017-02-1%202017-02-6%22%7D%5D%2C%22category%22%3A0%2C%22property%22%3A%22%22%7D&tz=-330
     const getMeaning = (e) => {
         e.preventDefault()
@@ -29,27 +23,6 @@ const Search = () => {
                 setMeaning(err);
             })
     }
-
-    // useEffect(()=>{
-    //     const script = document.createElement("script");
-    //     script.src = "https://ssl.gstatic.com/trends_nrtr/3349_RC01/embed_loader.js";
-    //     script.async = true;
-    //     script.onload = () => {
-    //         trends.embed.renderExploreWidget("TIMESERIES", {"comparisonItem":[{"keyword":"book","geo":"IN","time":"now 1-d"}],"category":0,"property":""}, {"exploreQuery":"date=now%201-d&geo=IN&q=book&hl=en-IN","guestPath":"https://trends.google.com:443/trends/embed/"});
-    //     }
-    //     document.body.appendChild(script);
-
-    // },[])
-    // const data = googleTrendsApi
-    // .interestOverTime({ keyword: ["Women's march", "Trump Inauguration"] })
-    // .then(function (results) {
-    //   res.status(200).json(results)
-    // });
-    // headers: {
-    //     'Access-Control-Allow-Origin': '*',
-    //     Accept: 'application/json',
-    //     'Content-Type': 'application/json',
-    // },
 
     useEffect(()=>{
         if(meaning != ""){
