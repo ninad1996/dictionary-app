@@ -1,7 +1,5 @@
 # Dictionary App with Next.js, React, Public API, and Google Trends
 
-![Dictionary App](/path/to/app-screenshot.png)
-
 ## Table of Contents
 
 - [Introduction](#introduction)
