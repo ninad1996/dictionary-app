@@ -2,9 +2,16 @@
 import {useState, useEffect, useRef} from 'react'
 import FeatherIcon from 'feather-icons-react'
 import axios from "axios"
+import MapChart from './MapChart'
+
+
 // http://localhost:5000/
 const Search = () => {
     const [meaning, setMeaning] = useState("");
+    const [wordData, setWordData] = useState("");
+
+    const [map, setMap] = useState("");
+
     const form = useRef(null)    
     // https://trends.google.com/trends/api/explore?hl=en-US&req=%7B%22comparisonItem%22%3A%5B%7B%22keyword%22%3A%22Donald%20Trump%22%2C%22startTime%22%3A%222017-02-01T00%3A00%3A00.000Z%22%2C%22endTime%22%3A%222017-02-06T00%3A00%3A00.000Z%22%2C%22geo%22%3A%22US%22%2C%22agent%22%3A%7B%22options%22%3A%7B%7D%2C%22proxy%22%3A%22http%3A%2F%2F168.63.76.32%3A3128%2F%22%2C%22proxyHeaders%22%3A%7B%7D%2C%22connectOpts%22%3A%7B%22ALPNProtocols%22%3A%5B%22http%2F1.1%22%5D%2C%22host%22%3A%22168.63.76.32%22%2C%22port%22%3A3128%7D%7D%2C%22hl%22%3A%22en-US%22%2C%22category%22%3A0%2C%22timezone%22%3A-330%2C%22property%22%3A%22%22%2C%22time%22%3A%222017-02-1%202017-02-6%22%7D%5D%2C%22category%22%3A0%2C%22property%22%3A%22%22%7D&tz=-330
     const getMeaning = (e) => {
@@ -14,19 +21,28 @@ const Search = () => {
         const formJson = Object.fromEntries(formData.entries())        
         let word = formJson.search.trim()
         console.log(word);
+        setWordData(word);
             axios.get(`https://api.dictionaryapi.dev/api/v2/entries/en/${word}`).then((response)=>{
-                console.log(response);
                 setMeaning(response)
             }).catch((err)=> {
                 setMeaning(err);
             })           
     }
-
+    // ?word=${wordData}
     useEffect(()=>{
         if(meaning != ""){
             // https://trends.google.com/trends/api/widgetdata/comparedgeo?hl=en-US&tz=-330&req=%7B%22geo%22:%7B%22country%22:%22IN%22%7D,%22comparisonItem%22:%5B%7B%22time%22:%222023-07-22T11%5C%5C:07%5C%5C:46+2023-07-23T11%5C%5C:07%5C%5C:46%22,%22complexKeywordsRestriction%22:%7B%22keyword%22:%5B%7B%22type%22:%22BROAD%22,%22value%22:%22book%22%7D%5D%7D%7D%5D,%22resolution%22:%22REGION%22,%22locale%22:%22en-US%22,%22requestOptions%22:%7B%22property%22:%22%22,%22backend%22:%22CM%22,%22category%22:0%7D,%22userConfig%22:%7B%22userType%22:%22USER_TYPE_LEGIT_USER%22%7D%7D&token=APP6_UEAAAAAZL5bgtXjbW0OecB57GqZYAHa5-ja0cdw
-            axios.get(`/api/cors`).then((response)=>{
+            axios.get(`http://localhost:5000/api/browser?word=${wordData}`).then((response)=>{
                 console.log(response);
+                let json = response.data.comparedByRegion;
+                console.log(json)
+                // console.log(json);
+                // json = json.replace(/\)]}',\n/, "");
+                // console.log(json);
+                // json = JSON.parse(json);
+                // console.log(json);
+                // console.log(JSON.parse(json));
+                setMap(json);
             }).catch((err)=> {
                 console.log(err);
             })            
@@ -44,6 +60,7 @@ const Search = () => {
             </label>
         </form>
         <Result meaning={meaning}/>
+        <MapChart data={map}/>
         </>
     );
 }

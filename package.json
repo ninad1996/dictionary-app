@@ -3,15 +3,6 @@
   "version": "0.1.0",
   "homepage": "https://ninad1996.github.io/dictionary-app",
   "private": true,
-  "browser": {
-    "fs": false,
-    "path": false,
-    "os": false,
-    "dns": false,
-    "net": false,
-    "tls": false,
-    "http2": false
-  },
   "scripts": {
     "predeploy": "npm run build",
     "deploy": "gh-pages -d .next",
@@ -25,16 +16,22 @@
     "axios": "^1.4.0",
     "concurrently": "^8.2.0",
     "cors": "^2.8.5",
+    "d3-geo-projection": "^4.0.0",
+    "d3-scale": "^4.0.2",
     "eslint": "8.45.0",
     "eslint-config-next": "13.4.12",
     "express": "^4.18.2",
     "feather-icons-react": "^0.6.2",
+    "fs": "^0.0.1-security",
     "http-proxy-middleware": "^2.0.6",
     "https-proxy-agent": "^7.0.1",
     "next": "13.4.12",
+    "node-fetch": "^3.3.1",
     "postcss": "8.4.27",
+    "puppeteer": "^20.9.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "react-simple-maps": "^3.0.0",
     "tailwindcss": "3.3.3"
   },
   "devDependencies": {

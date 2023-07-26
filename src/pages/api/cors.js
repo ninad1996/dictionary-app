@@ -1,6 +1,5 @@
-// const cors = require('cors');
-// const corsOptions = require('./src/config/cors');
 const axios = require("axios")
+const puppeteer = require('puppeteer');
 
 export default function handler(req, res) {
     res.statusCode = 200;
