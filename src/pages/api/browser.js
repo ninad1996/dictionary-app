@@ -1,6 +1,6 @@
 const axios = require("axios")
 
-export default function handler(req, res) {
+export default async function handler(req, res) {
     res.statusCode = 200;
     res.setHeader('Access-Control-Allow-Credentials', true)
     res.setHeader('Access-Control-Allow-Origin', '*') // replace this your actual origin
