@@ -46,7 +46,7 @@ export default async function handler(req, res) {
         console.log("here");
 
         await page.goto(URL);
-        await page.waitForTimeout(5000);
+        await page.waitFor(5000);
 
 
         await page.reload();
@@ -59,7 +59,7 @@ export default async function handler(req, res) {
         const valuePattern = /%22value%22:%22(?<value>[^%]+)/gm; //https://regex101.com/r/PNcP1u/1
         page.on("response", async (response) => {
             if (response.headers()["content-type"]?.includes("application/")) {
-            console.log(response);
+            // console.log(response);
             const responseData = await response.text();
             const responseURL = await response.url();
                 const values = [...responseURL.matchAll(valuePattern)].map(({ groups }) => groups.value);
@@ -81,7 +81,7 @@ export default async function handler(req, res) {
             }
         });
 
-        await page.waitForTimeout(10000);
+        await page.waitFor(10000);
         if (browser) {
             await browser.close();
         }

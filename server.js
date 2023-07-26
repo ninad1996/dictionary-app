@@ -46,7 +46,7 @@ app.get('/api/browser', async (req, res) => { //Line 9
     await page.setDefaultNavigationTimeout(60000);
     await page.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.109 Safari/537.36');
     await page.goto(URL);
-    await page.waitForTimeout(5000);
+    await page.waitFor(5000);
 
 
     await page.reload();
@@ -80,7 +80,7 @@ app.get('/api/browser', async (req, res) => { //Line 9
       }
     });
   
-    await page.waitForTimeout(10000);
+    await page.waitFor(10000);
     if (browser) {
       await browser.close();
     }
