@@ -1,5 +1,8 @@
 const axios = require("axios")
-const puppeteer = require('puppeteer');
+
+const edgeChromium = require('chrome-aws-lambda');
+
+const puppeteer = require('puppeteer-core');
 
 export default async function handler(req, res) {
     res.statusCode = 200;
@@ -28,7 +31,8 @@ export default async function handler(req, res) {
         // let params = {"comparisonItem":[{"keyword": "red","geo":"IN","time":"now 1-d"}],"category":0,"property":""}
         const browser = await puppeteer.launch({
             headless: false,
-            args: ["--no-sandbox", "--disable-setuid-sandbox"],
+            args: edgeChromium.args
+            // args: ["--no-sandbox", "--disable-setuid-sandbox"],
         });
 
         const searchQueries = [word];

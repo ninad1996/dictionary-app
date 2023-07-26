@@ -5,7 +5,7 @@ const cors = require('cors');
 const corsOptions = require('./src/config/cors');
 const axios = require("axios")
 
-const puppeteer = require('puppeteer');
+const puppeteer = require('puppeteer-core');
 
 
 app.use(cors(corsOptions));
