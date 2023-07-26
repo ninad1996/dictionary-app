@@ -36,27 +36,20 @@ const MapChart = (data) => {
                 let stateName = geo.properties.countrycode;
                 var val = 0;
                 if(mapData.length >0 ){
-                  // console.log(mapData);
-                  console.log("country");
                   val = mapData.filter((state) => {
                       // console.log(state.geo, stateName);
                       if(state.geo == stateName){
                         return state.values; 
                       }
                     })   
-
-                    console.log(val);
-                    console.log("country ends");
                     if(val[0] !== undefined){
                         val = val[0].values[0].value;
                         if(val =="" || val == "<1"){
                           val = 20;
                         }
                         if(val < 10){val  = val * 10}
-                        console.log("vaal",stateName, val);
                     }else{
                         val = 0;
-                        console.log("vaal empty",stateName, val);
                     }
                 }
             return(

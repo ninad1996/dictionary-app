@@ -45,14 +45,11 @@ app.get('/api/browser', async (req, res) => { //Line 9
     const page = await browser.newPage();
     await page.setDefaultNavigationTimeout(60000);
     await page.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.109 Safari/537.36');
-    console.log("here");
-    
     await page.goto(URL);
     await page.waitForTimeout(5000);
 
 
     await page.reload();
-    console.log("here2");
     // await page.waitForResponse(URL);
     const comparedByRegion = [];
 
