@@ -1,4 +1,5 @@
 const axios = require("axios")
+const puppeteer = require('puppeteer');
 
 export default async function handler(req, res) {
     res.statusCode = 200;
